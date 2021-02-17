@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:vsshell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
-             xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
              Background="{DynamicResource {x:Static vsshell:VsBrushes.WindowKey}}"
              Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"
              mc:Ignorable="d"
@@ -12,13 +11,9 @@
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
         <Grid MinWidth="300" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,5,0,0">
             <Grid.Resources>
-                <Style TargetType="ComboBox">
-                </Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Margin" Value="5" />
                     <Setter Property="VerticalAlignment" Value="Center" />
-                </Style>
-                <Style TargetType="TextBox">
                 </Style>
             </Grid.Resources>
             <Grid.ColumnDefinitions>
@@ -38,32 +33,42 @@
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Type"/>
             <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding CommitTypes}"
                   SelectedItem="{Binding SelectedCommitType}" 
-                  Margin="5,10" />
+                  Margin="5,10"
+                  Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ComboBoxStyleKey}}" />
 
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Scope"/>
             <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Scopes}"
                   SelectedItem="{Binding SelectedScope}"
                   Text="{Binding NewScope, UpdateSourceTrigger=PropertyChanged}"
-                  IsEditable="True" Margin="5,10" />
+                  IsEditable="True" Margin="5,10"
+                  Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ComboBoxStyleKey}}" />
 
             <TextBlock Grid.Row="2" Grid.Column="0" Text="Subject" />
             <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Subject, UpdateSourceTrigger=PropertyChanged}" 
-                 TextWrapping="Wrap" Margin="5,10" />
+                 TextWrapping="Wrap" Margin="5,10"
+                 Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
 
             <TextBlock Grid.Row="3" Grid.Column="0" Text="Description" />
             <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" 
-                 TextWrapping="Wrap" AcceptsReturn="True" Margin="5,10" VerticalScrollBarVisibility="Auto" />
+                 TextWrapping="Wrap" AcceptsReturn="True" Margin="5,10" VerticalScrollBarVisibility="Auto"
+                 Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}"/>
 
             <TextBlock Grid.Row="4" Grid.Column="0" Text="Closes" />
             <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Closes, UpdateSourceTrigger=PropertyChanged}"
-                 TextWrapping="Wrap" Margin="5,10"  />
+                 TextWrapping="Wrap" Margin="5,10"
+                 Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
 
             <TextBox Grid.Row="5" Grid.ColumnSpan="2" IsReadOnly="True" Margin="5"
                  TextWrapping="Wrap" Text="{Binding GeneratedCommitMessage, Mode=OneWay}"
-                 VerticalScrollBarVisibility="Auto" />
+                 VerticalScrollBarVisibility="Auto"
+                 Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
 
-            <Button Grid.Row="6" Grid.Column="0" Content="Copy" Margin="5" Width="70" Command="{Binding CopyCommand}" HorizontalAlignment="Left" />
-            <Button Grid.Row="6" Grid.Column="1" Content="Clear" Margin="5" Width="70" Command="{Binding ClearCommand}" HorizontalAlignment="Left" />
+            <Button Grid.Row="6" Grid.Column="0" Content="Copy" Margin="5" Width="70" 
+                    Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ButtonStyleKey}}"
+                    Command="{Binding CopyCommand}" HorizontalAlignment="Left" />
+            <Button Grid.Row="6" Grid.Column="1" Content="Clear" Margin="5" Width="70"
+                    Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ButtonStyleKey}}"
+                    Command="{Binding ClearCommand}" HorizontalAlignment="Left" />
         </Grid>
     </ScrollViewer>
 </UserControl>
