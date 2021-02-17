@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="VSConventionalCommitMessageHelper.92931a0d-bac5-44fe-8fe9-0e14f2e350eb" Version="1.0" Language="en-US" Publisher="Arnold Lorincz" />
+        <Identity Id="VSConventionalCommitMessageHelper.92931a0d-bac5-44fe-8fe9-0e14f2e350eb" Version="1.0.0" Language="en-US" Publisher="Arnold Lorincz" />
         <DisplayName>VSConventionalCommitMessageHelper</DisplayName>
         <Description xml:space="preserve">Helper tool to generate conventional commit messages</Description>
         <Tags>conventional-commit git changelog</Tags>

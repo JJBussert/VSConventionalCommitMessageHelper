@@ -15,7 +15,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VSConventionalCommitMessage</RootNamespace>
-    <AssemblyName>VSConventionalCommitMessage</AssemblyName>
+    <AssemblyName>VSConventionalCommitMessageHelper</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <UseCodebase>true</UseCodebase>
