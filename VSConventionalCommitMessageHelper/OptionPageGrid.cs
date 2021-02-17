@@ -39,6 +39,6 @@ namespace VSConventionalCommitMessage
         }
 
         private string commitTypes = "feat,fix,refactor,style,test,docs,chore";
-        private string scopes = ",ui,plugin,temlate,driver,validation";
+        private string scopes = ",ui,ci";
     }
 }
