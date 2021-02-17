@@ -163,26 +163,22 @@ namespace VSConventionalCommitMessage
 
         public ICommand CopyCommand
         {
-            get => new RelayCommand( () =>
-            {
-                Clipboard.SetText( GeneratedCommitMessage );
-            },
-            () =>
-            {
-                return string.IsNullOrEmpty( SelectedCommitType ) == false && string.IsNullOrEmpty( Subject ) == false;
-            } );
+            get => new RelayCommand(
+                () => Clipboard.SetText( GeneratedCommitMessage ),
+                () => string.IsNullOrEmpty( SelectedCommitType ) == false && string.IsNullOrEmpty( Subject ) == false );
         }
 
         public ICommand ClearCommand
         {
             get => new RelayCommand( () =>
-            {
-                SelectedCommitType = null;
-                SelectedScope = null;
-                Subject = null;
-                Description = null;
-                Closes = null;
-            } );
+                {
+                    SelectedCommitType = null;
+                    SelectedScope = null;
+                    Subject = null;
+                    Description = null;
+                    Closes = null;
+                },
+                () => string.IsNullOrEmpty( GeneratedCommitMessage ) == false );
         }
 
         private readonly OptionPageGrid optionPage;
