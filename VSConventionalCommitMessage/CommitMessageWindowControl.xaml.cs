@@ -10,13 +10,15 @@ namespace VSConventionalCommitMessage
         /// <summary>
         /// Initializes a new instance of the <see cref="CommitMessageWindowControl"/> class.
         /// </summary>
-        public CommitMessageWindowControl()
+        public CommitMessageWindowControl( VSConventionalCommitMessagePackage package )
         {
             InitializeComponent();
 
-            DataContext = VM;
+            viewModel = new CommitMessageViewModel( package.OptionPage );
+
+            DataContext = viewModel;
         }
 
-        public CommitMessageViewModel VM { get; } = new CommitMessageViewModel();
+        private readonly CommitMessageViewModel viewModel;
     }
 }

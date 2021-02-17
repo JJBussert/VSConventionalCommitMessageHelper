@@ -46,11 +46,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Base\ViewModelBase.cs" />
+    <Compile Include="Base\RelayCommand.cs" />
     <Compile Include="CommitMessageViewModel.cs" />
     <Compile Include="CommitMessageWindow.cs" />
     <Compile Include="CommitMessageWindowCommand.cs" />
     <Compile Include="CommitMessageWindowControl.xaml.cs">
       <DependentUpon>CommitMessageWindowControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OptionPageGrid.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VSConventionalCommitMessagePackage.cs" />
@@ -75,9 +80,9 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="16.0.206" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="16.8.3038" />
-    <PackageReference Include="MvvmLightLibs">
-      <Version>5.4.1.1</Version>
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="16.10.10">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

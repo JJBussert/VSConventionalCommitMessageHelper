@@ -24,15 +24,24 @@ namespace VSConventionalCommitMessage
     /// </para>
     /// </remarks>
     [PackageRegistration( UseManagedResourcesOnly = true, AllowsBackgroundLoading = true )]
-    [Guid( VSConventionalCommitMessagePackage.PackageGuidString )]
-    [ProvideMenuResource("Menus.ctmenu", 1)]
-    [ProvideToolWindow(typeof(CommitMessageWindow))]
+    [Guid( PackageGuidString )]
+    [ProvideMenuResource( "Menus.ctmenu", 1 )]
+    [ProvideToolWindow( typeof( CommitMessageWindow ) )]
+    [ProvideOptionPage( typeof( OptionPageGrid ), "Commit Message Helper", "General", 0, 0, true )]
     public sealed class VSConventionalCommitMessagePackage : AsyncPackage
     {
         /// <summary>
         /// VSConventionalCommitMessagePackage GUID string.
         /// </summary>
         public const string PackageGuidString = "5a481121-da55-492d-9e6a-4c11c7111f7b";
+
+        public OptionPageGrid OptionPage
+        {
+            get
+            {
+                return ( OptionPageGrid ) GetDialogPage( typeof( OptionPageGrid ) );
+            }
+        }
 
         #region Package Members
 
@@ -48,7 +57,7 @@ namespace VSConventionalCommitMessage
             // When initialized asynchronously, the current thread may be a background thread at this point.
             // Do any initialization that requires the UI thread after switching to the UI thread.
             await this.JoinableTaskFactory.SwitchToMainThreadAsync( cancellationToken );
-            await CommitMessageWindowCommand.InitializeAsync(this);
+            await CommitMessageWindowCommand.InitializeAsync( this );
         }
 
         #endregion

@@ -94,8 +94,6 @@ namespace VSConventionalCommitMessage
                 throw new NotSupportedException( "Cannot create tool window" );
             }
 
-            //( window.Content as CommitMessageWindowControl ).VM.Clear();
-
             IVsWindowFrame windowFrame = ( IVsWindowFrame ) window.Frame;
             Microsoft.VisualStudio.ErrorHandler.ThrowOnFailure( windowFrame.Show() );
         }

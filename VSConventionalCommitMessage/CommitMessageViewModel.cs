@@ -1,26 +1,28 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.Windows.Input;
+using VSConventionalCommitMessage.Base;
 
 namespace VSConventionalCommitMessage
 {
     public class CommitMessageViewModel : ViewModelBase
     {
+        public CommitMessageViewModel( OptionPageGrid optionPage )
+        {
+            this.optionPage = optionPage;
+
+            if ( optionPage != null )
+            {
+                optionPage.PropertyChanged += ( s, e ) =>
+                {
+                    OnPropertyChanged( e.PropertyName );
+                };
+            }
+        }
+
         #region CommitTypes
         public IList<string> CommitTypes
         {
-            get => new List<string>
-            {
-                "feat",
-                "fix",
-                "refactor",
-                "style",
-                "test",
-                "docs",
-                "chore"
-            };
+            get => optionPage?.CommitTypes?.Split( ',' );
         }
 
         public string SelectedCommitType
@@ -28,8 +30,9 @@ namespace VSConventionalCommitMessage
             get => selectedCommitType;
             set
             {
-                Set( nameof( SelectedCommitType ), ref selectedCommitType, value );
-                RaisePropertyChanged( nameof( GeneratedCommitMessage ) );
+                selectedCommitType = value;
+                OnPropertyChanged();
+                OnPropertyChanged( nameof( GeneratedCommitMessage ) );
             }
         }
 
@@ -41,7 +44,7 @@ namespace VSConventionalCommitMessage
 
         public IEnumerable<string> Scopes
         {
-            get => scopes;
+            get => optionPage?.Scopes?.Split( ',' );
         }
 
         public string SelectedScope
@@ -49,8 +52,9 @@ namespace VSConventionalCommitMessage
             get => selectedScope;
             set
             {
-                Set( nameof( SelectedScope ), ref selectedScope, value );
-                RaisePropertyChanged( nameof( GeneratedCommitMessage ) );
+                selectedScope = value;
+                OnPropertyChanged();
+                OnPropertyChanged( nameof( GeneratedCommitMessage ) );
             }
         }
 
@@ -65,21 +69,10 @@ namespace VSConventionalCommitMessage
                 if ( !string.IsNullOrEmpty( value ) )
                 {
                     var s = value.Trim();
-                    scopes.Add( s );
                     SelectedScope = s;
                 }
             }
         }
-
-        private readonly ObservableCollection<string> scopes = new ObservableCollection<string>
-        {
-            "",
-            "ui",
-            "plugin",
-            "template",
-            "driver",
-            "validation"
-        };
 
         private string selectedScope = "";
 
@@ -92,8 +85,9 @@ namespace VSConventionalCommitMessage
             get => subject;
             set
             {
-                Set( nameof( Subject ), ref subject, value );
-                RaisePropertyChanged( nameof( GeneratedCommitMessage ) );
+                subject = value;
+                OnPropertyChanged();
+                OnPropertyChanged( nameof( GeneratedCommitMessage ) );
             }
         }
 
@@ -108,8 +102,9 @@ namespace VSConventionalCommitMessage
             get => description;
             set
             {
-                Set( nameof( Description ), ref description, value );
-                RaisePropertyChanged( nameof( GeneratedCommitMessage ) );
+                description = value;
+                OnPropertyChanged();
+                OnPropertyChanged( nameof( GeneratedCommitMessage ) );
             }
         }
 
@@ -124,8 +119,9 @@ namespace VSConventionalCommitMessage
             get => closes;
             set
             {
-                Set( nameof( Closes ), ref closes, value );
-                RaisePropertyChanged( nameof( GeneratedCommitMessage ) );
+                closes = value;
+                OnPropertyChanged();
+                OnPropertyChanged( nameof( GeneratedCommitMessage ) );
             }
         }
 
@@ -177,5 +173,7 @@ namespace VSConventionalCommitMessage
             Description = null;
             Closes = null;
         }
+
+        private readonly OptionPageGrid optionPage;
     }
 }
