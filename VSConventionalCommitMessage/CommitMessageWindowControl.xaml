@@ -62,7 +62,8 @@
                  TextWrapping="Wrap" Text="{Binding GeneratedCommitMessage, Mode=OneWay}"
                  VerticalScrollBarVisibility="Auto" />
 
-            <Button Grid.Row="6" Grid.Column="0" Content="Clear" Margin="5" Command="{Binding ClearCommand}" />
+            <Button Grid.Row="6" Grid.Column="0" Content="Copy" Margin="5" Width="70" Command="{Binding CopyCommand}" HorizontalAlignment="Left" />
+            <Button Grid.Row="6" Grid.Column="1" Content="Clear" Margin="5" Width="70" Command="{Binding ClearCommand}" HorizontalAlignment="Left" />
         </Grid>
     </ScrollViewer>
 </UserControl>

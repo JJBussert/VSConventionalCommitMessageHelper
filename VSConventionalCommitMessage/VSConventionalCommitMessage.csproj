@@ -92,7 +92,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\CommitMessageWindowCommand.png" />
     <VSCTCompile Include="VSConventionalCommitMessagePackage.vsct">
       <ResourceName>Menus.ctmenu</ResourceName>
     </VSCTCompile>

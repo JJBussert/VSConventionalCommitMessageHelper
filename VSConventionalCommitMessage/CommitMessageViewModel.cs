@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Input;
 using VSConventionalCommitMessage.Base;
 
@@ -139,7 +140,7 @@ namespace VSConventionalCommitMessage
                 {
                     message += $"({SelectedScope.Trim()}): ";
                 }
-                else
+                else if ( string.IsNullOrEmpty( SelectedCommitType ) == false )
                 {
                     message += ": ";
                 }
@@ -160,18 +161,28 @@ namespace VSConventionalCommitMessage
             }
         }
 
-        public ICommand ClearCommand
+        public ICommand CopyCommand
         {
-            get => new RelayCommand( Clear );
+            get => new RelayCommand( () =>
+            {
+                Clipboard.SetText( GeneratedCommitMessage );
+            },
+            () =>
+            {
+                return string.IsNullOrEmpty( SelectedCommitType ) == false && string.IsNullOrEmpty( Subject ) == false;
+            } );
         }
 
-        public void Clear()
+        public ICommand ClearCommand
         {
-            SelectedCommitType = null;
-            SelectedScope = null;
-            Subject = null;
-            Description = null;
-            Closes = null;
+            get => new RelayCommand( () =>
+            {
+                SelectedCommitType = null;
+                SelectedScope = null;
+                Subject = null;
+                Description = null;
+                Closes = null;
+            } );
         }
 
         private readonly OptionPageGrid optionPage;

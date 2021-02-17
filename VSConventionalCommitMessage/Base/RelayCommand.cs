@@ -11,7 +11,7 @@ namespace VSConventionalCommitMessage.Base
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public RelayCommand( Action execute, Func<object, bool> canExecute = null )
+        public RelayCommand( Action execute, Func<bool> canExecute = null )
         {
             this.execute = execute;
             this.canExecute = canExecute;
@@ -19,7 +19,7 @@ namespace VSConventionalCommitMessage.Base
 
         public bool CanExecute( object parameter )
         {
-            return canExecute == null || canExecute( parameter );
+            return canExecute == null || canExecute();
         }
 
         public void Execute( object parameter )
@@ -28,6 +28,6 @@ namespace VSConventionalCommitMessage.Base
         }
 
         private readonly Action execute;
-        private readonly Func<object, bool> canExecute;
+        private readonly Func<bool> canExecute;
     }
 }
