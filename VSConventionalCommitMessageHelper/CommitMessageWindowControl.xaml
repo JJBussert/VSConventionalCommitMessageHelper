@@ -7,9 +7,12 @@
              Background="{DynamicResource {x:Static vsshell:VsBrushes.WindowKey}}"
              Foreground="{DynamicResource {x:Static vsshell:VsBrushes.WindowTextKey}}"
              mc:Ignorable="d"
-             VerticalAlignment="Top">
+             VerticalAlignment="Stretch"
+             HorizontalAlignment="Stretch"
+             Name="window">
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-        <Grid MinWidth="300" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,5,0,0">
+        <Grid MinWidth="200" MaxWidth="{Binding ElementName=window, Path=ActualWidth}" 
+              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5">
             <Grid.Resources>
                 <Style TargetType="TextBlock">
                     <Setter Property="Margin" Value="5" />
@@ -17,8 +20,8 @@
                 </Style>
             </Grid.Resources>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition MaxWidth="300" />
+                <ColumnDefinition MaxWidth="80" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="40" />
@@ -30,13 +33,13 @@
                 <RowDefinition Height="40" />
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Type"/>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Type" />
             <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding CommitTypes}"
-                  SelectedItem="{Binding SelectedCommitType}" 
+                  SelectedItem="{Binding SelectedCommitType}"
                   Margin="5,10"
                   Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ComboBoxStyleKey}}" />
 
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Scope"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Scope" />
             <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Scopes}"
                   SelectedItem="{Binding SelectedScope}"
                   Text="{Binding NewScope, UpdateSourceTrigger=PropertyChanged}"
@@ -44,14 +47,14 @@
                   Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ComboBoxStyleKey}}" />
 
             <TextBlock Grid.Row="2" Grid.Column="0" Text="Subject" />
-            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Subject, UpdateSourceTrigger=PropertyChanged}" 
-                 TextWrapping="Wrap" Margin="5,10"
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Subject, UpdateSourceTrigger=PropertyChanged}"
+                 TextWrapping="Wrap" Margin="5,10" VerticalScrollBarVisibility="Auto"
                  Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
 
             <TextBlock Grid.Row="3" Grid.Column="0" Text="Description" />
-            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
                  TextWrapping="Wrap" AcceptsReturn="True" Margin="5,10" VerticalScrollBarVisibility="Auto"
-                 Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}"/>
+                 Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
 
             <TextBlock Grid.Row="4" Grid.Column="0" Text="Closes" />
             <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Closes, UpdateSourceTrigger=PropertyChanged}"
@@ -63,12 +66,14 @@
                  VerticalScrollBarVisibility="Auto"
                  Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
 
-            <Button Grid.Row="6" Grid.Column="0" Content="Copy" Margin="5" Width="70" 
-                    Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ButtonStyleKey}}"
-                    Command="{Binding CopyCommand}" HorizontalAlignment="Left" />
-            <Button Grid.Row="6" Grid.Column="1" Content="Clear" Margin="5" Width="70"
-                    Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ButtonStyleKey}}"
-                    Command="{Binding ClearCommand}" HorizontalAlignment="Left" />
+            <StackPanel Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal">
+                <Button Content="Copy" Margin="5" Width="50"
+                        Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ButtonStyleKey}}"
+                        Command="{Binding CopyCommand}" HorizontalAlignment="Left" />
+                <Button Content="Clear" Margin="5" Width="50"
+                        Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ButtonStyleKey}}"
+                        Command="{Binding ClearCommand}" HorizontalAlignment="Left" />
+            </StackPanel>
         </Grid>
     </ScrollViewer>
 </UserControl>
