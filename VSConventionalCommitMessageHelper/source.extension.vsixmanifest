@@ -5,6 +5,7 @@
         <DisplayName>VS Conventional Commit Message Helper</DisplayName>
         <Description xml:space="preserve">Helper tool to generate conventional commit messages</Description>
         <MoreInfo>https://github.com/arnoldlorincz/VSConventionalCommitMessageHelper</MoreInfo>
+        <License>LICENSE.txt</License>
         <ReleaseNotes>https://github.com/arnoldlorincz/VSConventionalCommitMessageHelper/releases</ReleaseNotes>
         <Tags>conventional-commit git changelog</Tags>
     </Metadata>
