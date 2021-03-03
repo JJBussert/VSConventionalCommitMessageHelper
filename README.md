@@ -1,5 +1,7 @@
 # Visual Studio Conventional Commit Message Helper
 
+*Install from [VS Marketplace](https://marketplace.visualstudio.com/items?itemName=ArnoldLorincz.VSConventionalCommitMessageHelper)*
+
 Helper toolbox to generate commit messages in the conventional commit format. <br/>
 Open toolbox from `View -> Other Windows -> Commit Message Helper`.
 
