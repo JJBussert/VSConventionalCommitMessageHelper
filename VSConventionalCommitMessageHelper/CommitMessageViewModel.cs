@@ -79,23 +79,6 @@ namespace VSConventionalCommitMessage
 
         #endregion
 
-        #region Subject
-
-        public string Subject
-        {
-            get => subject;
-            set
-            {
-                subject = value;
-                OnPropertyChanged();
-                OnPropertyChanged( nameof( GeneratedCommitMessage ) );
-            }
-        }
-
-        private string subject;
-
-        #endregion
-
         #region Description
 
         public string Description
@@ -110,6 +93,23 @@ namespace VSConventionalCommitMessage
         }
 
         private string description;
+
+        #endregion
+
+        #region Body
+
+        public string Body
+        {
+            get => body;
+            set
+            {
+                body = value;
+                OnPropertyChanged();
+                OnPropertyChanged( nameof( GeneratedCommitMessage ) );
+            }
+        }
+
+        private string body;
 
         #endregion
 
@@ -145,11 +145,11 @@ namespace VSConventionalCommitMessage
                     message += ": ";
                 }
 
-                message += Subject?.Trim();
+                message += Description?.Trim();
 
-                if ( string.IsNullOrEmpty( Description ) == false )
+                if ( string.IsNullOrEmpty( Body ) == false )
                 {
-                    message += $"\n\n{Description.Trim()}";
+                    message += $"\n\n{Body.Trim()}";
                 }
 
                 if ( string.IsNullOrEmpty( Closes ) == false )
@@ -165,7 +165,7 @@ namespace VSConventionalCommitMessage
         {
             get => new RelayCommand(
                 () => Clipboard.SetText( GeneratedCommitMessage ),
-                () => string.IsNullOrEmpty( SelectedCommitType ) == false && string.IsNullOrEmpty( Subject ) == false );
+                () => string.IsNullOrEmpty( SelectedCommitType ) == false && string.IsNullOrEmpty( Description ) == false );
         }
 
         public ICommand ClearCommand
@@ -174,8 +174,8 @@ namespace VSConventionalCommitMessage
                 {
                     SelectedCommitType = null;
                     SelectedScope = null;
-                    Subject = null;
                     Description = null;
+                    Body = null;
                     Closes = null;
                 },
                 () => string.IsNullOrEmpty( GeneratedCommitMessage ) == false );

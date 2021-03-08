@@ -46,13 +46,13 @@
                   IsEditable="True" Margin="5,10"
                   Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ComboBoxStyleKey}}" />
 
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="Subject" />
-            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Subject, UpdateSourceTrigger=PropertyChanged}"
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Description" />
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
                  TextWrapping="Wrap" Margin="5,10" VerticalScrollBarVisibility="Auto"
                  Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
 
-            <TextBlock Grid.Row="3" Grid.Column="0" Text="Description" />
-            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Body" />
+            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Body, UpdateSourceTrigger=PropertyChanged}"
                  TextWrapping="Wrap" AcceptsReturn="True" Margin="5,10" VerticalScrollBarVisibility="Auto"
                  Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
 
