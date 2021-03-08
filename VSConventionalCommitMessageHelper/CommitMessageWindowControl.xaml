@@ -29,6 +29,7 @@
                 <RowDefinition Height="60" />
                 <RowDefinition Height="80" />
                 <RowDefinition Height="40" />
+                <RowDefinition Height="80" />
                 <RowDefinition Height="105" />
                 <RowDefinition Height="40" />
             </Grid.RowDefinitions>
@@ -39,7 +40,7 @@
                   Margin="5,10"
                   Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ComboBoxStyleKey}}" />
 
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Scope" />
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Scope" TextWrapping="Wrap" />
             <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Scopes}"
                   SelectedItem="{Binding SelectedScope}"
                   Text="{Binding NewScope, UpdateSourceTrigger=PropertyChanged}"
@@ -51,22 +52,27 @@
                  TextWrapping="Wrap" Margin="5,10" VerticalScrollBarVisibility="Auto"
                  Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
 
-            <TextBlock Grid.Row="3" Grid.Column="0" Text="Body" />
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Body" TextWrapping="Wrap" />
             <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Body, UpdateSourceTrigger=PropertyChanged}"
                  TextWrapping="Wrap" AcceptsReturn="True" Margin="5,10" VerticalScrollBarVisibility="Auto"
                  Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
 
-            <TextBlock Grid.Row="4" Grid.Column="0" Text="Closes" />
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Closes" TextWrapping="Wrap" />
             <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Closes, UpdateSourceTrigger=PropertyChanged}"
                  TextWrapping="Wrap" Margin="5,10"
                  Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
 
-            <TextBox Grid.Row="5" Grid.ColumnSpan="2" IsReadOnly="True" Margin="5"
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Breaking Change (otional)" TextWrapping="Wrap" />
+            <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding BreakingChange, UpdateSourceTrigger=PropertyChanged}"
+                 TextWrapping="Wrap" AcceptsReturn="True" Margin="5,10" VerticalScrollBarVisibility="Auto"
+                 Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
+
+            <TextBox Grid.Row="6" Grid.ColumnSpan="2" IsReadOnly="True" Margin="5"
                  TextWrapping="Wrap" Text="{Binding GeneratedCommitMessage, Mode=OneWay}"
                  VerticalScrollBarVisibility="Auto"
                  Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
 
-            <StackPanel Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <StackPanel Grid.Row="7" Grid.ColumnSpan="2" Orientation="Horizontal">
                 <Button Content="Copy" Margin="5" Width="50"
                         Style="{DynamicResource {x:Static vsshell:VsResourceKeys.ButtonStyleKey}}"
                         Command="{Binding CopyCommand}" HorizontalAlignment="Left" />

@@ -130,6 +130,23 @@ namespace VSConventionalCommitMessage
 
         #endregion
 
+        #region BreakingChange
+
+        public string BreakingChange
+        {
+            get => breakingChange;
+            set
+            {
+                breakingChange = value;
+                OnPropertyChanged();
+                OnPropertyChanged( nameof( GeneratedCommitMessage ) );
+            }
+        }
+
+        private string breakingChange;
+
+        #endregion
+
         public string GeneratedCommitMessage
         {
             get
@@ -152,12 +169,19 @@ namespace VSConventionalCommitMessage
                     message += $"\n\n{Body.Trim()}";
                 }
 
+                message += "\n";
+
                 if ( string.IsNullOrEmpty( Closes ) == false )
                 {
-                    message += $"\n\nCloses {Closes.Trim()}";
+                    message += $"\nCloses {Closes.Trim()}";
                 }
 
-                return message;
+                if ( string.IsNullOrEmpty( BreakingChange ) == false )
+                {
+                    message += $"\nBREAKING CHANGE: {BreakingChange.Trim()}";
+                }
+
+                return message.Trim();
             }
         }
 
