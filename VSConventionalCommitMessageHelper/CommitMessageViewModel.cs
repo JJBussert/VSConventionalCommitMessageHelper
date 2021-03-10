@@ -193,10 +193,11 @@ namespace VSConventionalCommitMessage
             get => new RelayCommand( () =>
                 {
                     SelectedCommitType = null;
-                    SelectedScope = null;
+                    SelectedScope = "";
                     Description = null;
                     Body = null;
                     Closes = null;
+                    BreakingChange = null;
                 },
                 () => string.IsNullOrEmpty( GeneratedCommitMessage ) == false );
         }

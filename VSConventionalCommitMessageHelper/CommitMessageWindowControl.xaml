@@ -62,7 +62,7 @@
                  TextWrapping="Wrap" Margin="5,10"
                  Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
 
-            <TextBlock Grid.Row="5" Grid.Column="0" Text="Breaking Change (otional)" TextWrapping="Wrap" />
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="BREAKING CHANGE" TextWrapping="Wrap" />
             <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding BreakingChange, UpdateSourceTrigger=PropertyChanged}"
                  TextWrapping="Wrap" AcceptsReturn="True" Margin="5,10" VerticalScrollBarVisibility="Auto"
                  Style="{DynamicResource {x:Static vsshell:VsResourceKeys.TextBoxStyleKey}}" />
