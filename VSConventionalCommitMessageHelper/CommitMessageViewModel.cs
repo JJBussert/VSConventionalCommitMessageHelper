@@ -53,9 +53,12 @@ namespace VSConventionalCommitMessage
             get => selectedScope;
             set
             {
-                selectedScope = value;
-                OnPropertyChanged();
-                OnPropertyChanged( nameof( GeneratedCommitMessage ) );
+                if ( selectedScope != value )
+                {
+                    selectedScope = value;
+                    OnPropertyChanged();
+                    OnPropertyChanged( nameof( GeneratedCommitMessage ) );
+                }
             }
         }
 
@@ -63,15 +66,8 @@ namespace VSConventionalCommitMessage
         {
             set
             {
-                if ( SelectedScope != null )
-                {
-                    return;
-                }
-                if ( !string.IsNullOrEmpty( value ) )
-                {
-                    var s = value.Trim();
-                    SelectedScope = s;
-                }
+                var s = value.Trim();
+                SelectedScope = s;
             }
         }
 
